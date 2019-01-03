@@ -8,4 +8,5 @@
 # DT_URL=https://YOURTENANT.live.dynatrace.com
 
 output=$(curl -k -H "Content-Type: application/json" -H "Authorization: Api-Token ${DT_TOKEN}" -X GET ${DT_URL}/api/v1/problem/status)
+echo 'Received server response:' $output
 echo $output | python -c 'import json,sys;obj=json.load(sys.stdin);print(obj["result"]["totalOpenProblemsCount"]);'
